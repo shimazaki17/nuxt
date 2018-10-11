@@ -1,0 +1,14 @@
+.button {
+  transition: all .3s;
+  &:hover {
+    transition: all .3s;
+  }
+  &.is-secondary {
+    background-color: rgba($black, 0.3);
+    border: none;
+    color: $white;
+    &:hover {
+      background-color: rgba($black, 0.5);
+    }
+  }
+}

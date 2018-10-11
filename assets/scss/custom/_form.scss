@@ -1,0 +1,24 @@
+.field {
+  &.radio-list {
+    .control {
+      margin-bottom: 2rem;
+    }
+    .radio {
+      box-sizing: border-box;
+      background-color: $grey-lighter;
+      padding: 1rem .8rem;
+      color: $white;
+      font-weight: bold;
+      border: 2px solid $grey-lighter;
+      &.selected {
+        background-color: $white;
+        color: $primary;
+        border: 2px solid $primary;
+      }
+
+      &-button {
+        display: none;
+      }
+    }
+  }
+}

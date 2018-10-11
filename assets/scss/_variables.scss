@@ -1,0 +1,66 @@
+//Color Settings
+$black:	hsl(0, 0%, 4%);
+$black-bis:	hsl(0, 0%, 7%);
+$black-ter:	hsl(0, 0%, 14%);
+$grey-darker:	hsl(0, 0%, 21%);
+$grey-dark:	hsl(0, 0%, 29%);
+$grey: #808080;
+$grey-light:	hsl(0, 0%, 71%);
+$grey-lighter:	hsl(0, 0%, 86%);
+$white-ter:	hsl(0, 0%, 96%);
+$white-bis:	hsl(0, 0%, 98%);
+$white:	hsl(0, 0%, 100%);
+$orange:hsl(14, 100%, 53%);
+$yellow:	hsl(48, 100%, 67%);
+$green:	hsl(141, 71%, 48%);
+$green-10: #2ABD9F;
+$green-20: #2ABDBC;
+$blue-10: #2A78BD;
+
+
+$turquoise:	hsl(171, 100%, 41%);
+$cyan: hsl(204, 86%, 53%);
+$blue: #0060f3;
+$purple:	hsl(271, 100%, 71%);
+$red:	hsl(348, 100%, 61%);
+$pink : #E05499;
+// 2. Set your own initial variables
+// Add a serif family
+$family-sans-serif:'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic',sans-serif;;
+// Use the new serif family
+$family-primary: $family-sans-serif;
+// 3. Set the derived variables
+$gray: #a0a0a0;
+$gray-invert: #fff;
+// Use the new pink as the primary color
+$primary-invert: $gray-invert;
+$primary: #2ABDBC;
+$secondary: $green-10;
+$tertiary: $blue-10;
+$link: $primary;
+$info: $cyan;
+$success: $green;
+$warning: $yellow;
+$danger: $orange;
+$dark: $grey-darker;
+$text: $grey-dark;
+$link-hover: $primary;
+$border: $gray;
+
+//Footer
+$header-background-color: #333;
+$footer-background-color: #333;
+$footer-address-bg: #2B2B2B;
+$gap: 64px;
+$menu-item-hover-background-color: $blue;
+
+//media size
+$tablet: 769px;
+$desktop:	960px + (2 * $gap);
+$widescreen:	1152px + (2 * $gap);
+$widescreen-enabled:	true;
+$fullhd:	1344px + (2 * $gap);
+$fullhd-enabled: true;
+
+
+

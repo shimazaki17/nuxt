@@ -1,0 +1,76 @@
+
+/*********************************************************
+		Mixins
+**********************************************************/
+// module
+
+@mixin max-screen($break-point) {
+  @media screen and (max-width: $break-point) {
+    @content;
+  }
+}
+
+@mixin min-screen($break-point) {
+  @media screen and (min-width: $break-point) {
+    @content;
+  }
+}
+
+@mixin screen($break-point-min, $break-point-max) {
+  @media screen and (min-width: $break-point-min) and (max-width: $break-point-max) {
+    @content;
+  }
+}
+
+
+//utility
+@mixin ellip-1col() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+@mixin unselect() {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+//アニメーション
+@mixin transition($sec:.3s,$delay:0s ,$propaty:all,$easing: cubic-bezier(0.420, 0.000, 0.580, 1.000) ) {
+  -webkit-transition: $propaty $sec $easing $delay;
+  transition: $propaty $sec $easing $delay;
+}
+
+@mixin keyframes($animation_name:1) {
+  @-webkit-keyframes #{$animation_name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation_name} {
+    @content;
+  }
+  @-ms-keyframes #{$animation_name} {
+    @content;
+  }
+  @keyframes #{$animation_name} {
+    @content;
+  }
+}
+@mixin animation($animation-name, $duration:.4s ,$delay:0s,$easing:ease,$fill-mode:both,$direction:alternate,$count:infinite) {
+  -webkit-animation: $animation-name $duration $easing $delay $count $direction;
+  -ms-animation: $animation-name $duration $easing $delay $count $direction;
+  animation: $animation-name $duration $easing $delay $count $direction;
+
+  -webkit-animation-fill-mode: $fill-mode;
+  -ms-animation-fill-mode: $fill-mode;
+  animation-fill-mode: $fill-mode;
+
+}
+
+//	Font size
+@mixin rem($size) {
+  font-size: ($size/$root_fontsize) + em;
+  font-size: ($size/$root_fontsize) + rem;
+}
