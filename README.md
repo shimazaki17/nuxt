@@ -1,6 +1,6 @@
-# test
+# front
 
-> Nuxt.js project
+> Hinadan fron
 
 ## Build Setup
 
