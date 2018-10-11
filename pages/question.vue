@@ -1,4 +1,6 @@
 <template>
+<div class="app">
+
   <main class="main-content question-main">
     <div class="container is-centered">
       <div class="tabs is-centered is-toggle is-toggle-rounded">
@@ -17,8 +19,8 @@
             <dd>
               <!--ラジオボタン-->
               <div v-if="question.radio" class="field radio-list">
-                  <div class="control">
-                    <label class="radio" v-for="item in question.radio" :key="item.id" :class="{selected:question.picked === item.value}">
+                <div class="control">
+                  <label class="radio" v-for="item in question.radio" :key="item.id" :class="{selected:question.picked === item.value}">
                       <input type="radio" :name="item.title" :value="item.value" v-model="question.picked" class="radio-button">
                       {{item.title}}
                     </label>
@@ -79,52 +81,68 @@
           </dl>
         </li>
       </ul>
+
+
+
+
       <div class="has-text-centered">
-        <nuxt-link to="/" class="button is-rounded is-primary">作成する</nuxt-link>
+        <nuxt-link to="/result" class="button is-rounded is-primary">作成する</nuxt-link>
       </div>
     </div>
   </main>
+
+    <div class="example">
+      <form class="simple-form"   v-on:click="onSubmit">
+        <div class="simple-form__footer">
+          <button class="simple-form__submit-btn">Post</button>
+        </div>
+      </form>
+</div>
+    </div>
+
 </template>
 
+<script src="https://unpkg.com/axios/dist/axios.min.js">
+</script>
 
-<script>
+<script >
   export default {
     name: 'question',
     head() {
       return {
         title: this.title,
-        meta: [
-          { hid: 'description', name: 'description', content: 'Hinadan 弁護士監修のプライバシーポリシー自動生成' }
-        ]
+        meta: [{
+          hid: 'description',
+          name: 'description',
+          content: 'Hinadan 弁護士監修のプライバシーポリシー自動生成'
+        }]
       }
     },
     data() {
       return {
         title: 'Question',
         answerData: [],
-        questions: [
-          {
-            id:1,
+        questions: [{
+            id: 1,
             title: '法人名は？',
             placeholder: '法人名を入力'
           },
           {
-            id:2,
+            id: 2,
             title: '個人情報の管理責任者は？',
             placeholder: '責任者の役職を入力'
           },
           {
-            id:3,
+            id: 3,
             title: '個人情報の問い合わせ先は？',
             placeholder: '電話番号かメールアドレスを入力'
           },
           {
-            id:4,
+            id: 4,
             title: '個人情報の利用目的は？',
             placeholder: '利用目的を記入してください',
             checked: [],
-            checkList: [
-              {
+            checkList: [{
                 listName: 'サービスを提供するため',
                 check: false
               },
@@ -159,30 +177,28 @@
             ]
           },
           {
-            id:5,
+            id: 5,
             title: '個人情報の共同利用はありますか？',
             placeholder: '',
             picked: 'no',
-            additionalForm: [
-              {
-                title:'個人情報を共同利用する企業名',
+            additionalForm: [{
+                title: '個人情報を共同利用する企業名',
                 holder: '企業及びサービス名'
               },
               {
-                title:'共同で利用される個人情報の項目',
+                title: '共同で利用される個人情報の項目',
                 holder: '企業及びサービス名'
               },
               {
-                title:'利用目的',
+                title: '利用目的',
                 holder: '企業及びサービス名'
               },
               {
-                title:'共同利用する個人情報の管理責任者',
+                title: '共同利用する個人情報の管理責任者',
                 holder: '企業及びサービス名'
               }
             ],
-            radio: [
-              {
+            radio: [{
                 title: '共同利用がない',
                 value: 'no',
               },
@@ -193,14 +209,13 @@
             ]
           },
           {
-            id:6,
+            id: 6,
             title: '機微な個人情報（※）を取得しますか？',
             placeholder: '',
             showMessage: false,
             message: '機微な個人情報を取得する画面で同意ボタンを設置するなどして本人から明示的な同意を得る必要があります（プライバシーポリシー外で明示する必要があります）。',
             picked: 'no',
-            radio: [
-              {
+            radio: [{
                 title: '取得がない',
                 value: 'no',
               },
@@ -211,11 +226,10 @@
             ]
           },
           {
-            id:7,
+            id: 7,
             title: '匿名加工情報（※）を作成しますか？',
             picked: 'no',
-            radio: [
-              {
+            radio: [{
                 title: '作成しない',
                 value: 'no',
               },
@@ -224,30 +238,27 @@
                 value: 'yes',
               }
             ],
-            additionalForm: [
-              {
-                title:'提供する匿名加工情報に含まれる個人に関する情報の項目',
-                holder: '提供する匿名加工情報に含まれる個人情報の項目'
-              }
-            ]
+            additionalForm: [{
+              title: '提供する匿名加工情報に含まれる個人に関する情報の項目',
+              holder: '提供する匿名加工情報に含まれる個人情報の項目'
+            }]
           },
           {
-            id:8,
+            id: 8,
             title: '匿名加工情報を第三者に提供しますか？',
             placeholder: ''
           },
           {
-            id:9,
+            id: 9,
             title: '個人情報（匿名加工・機微な個人情報を除く）を第三者に提供しますか？',
             placeholder: ''
           },
           {
-            id:10,
+            id: 10,
             title: '行動ターゲティング広告の利用はありますか？',
             placeholder: '',
             picked: 'no',
-            radio: [
-              {
+            radio: [{
                 title: 'ない',
                 value: 'no',
               },
@@ -256,20 +267,17 @@
                 value: 'yes',
               }
             ],
-            additionalForm: [
-              {
-                title:'利用している行動ターゲティング広告の提供会社を記入してください',
-                holder: '会社名を入力'
-              }
-            ],
+            additionalForm: [{
+              title: '利用している行動ターゲティング広告の提供会社を記入してください',
+              holder: '会社名を入力'
+            }],
           },
           {
-            id:11,
+            id: 11,
             title: 'Google Adsense, Amazonアソシエイトの利用はありますか？',
             picked: 'no',
             checked: [],
-            radio: [
-              {
+            radio: [{
                 title: 'していない',
                 value: 'no',
               },
@@ -278,8 +286,7 @@
                 value: 'yes',
               }
             ],
-            additionalCheckBox: [
-              {
+            additionalCheckBox: [{
                 title: 'Google Adsense',
                 check: false
               },
@@ -290,11 +297,10 @@
             ]
           },
           {
-            id:12,
+            id: 12,
             title: '認定個人情報保護団体に加入していますか？',
             picked: 'no',
-            radio: [
-              {
+            radio: [{
                 title: 'していない',
                 value: 'no',
               },
@@ -303,20 +309,17 @@
                 value: 'yes',
               }
             ],
-            additionalForm: [
-              {
-                title:'利用している行動ターゲティング広告の提供会社を記入してください。',
-                holder: '会社名を入力'
-              }
-            ],
+            additionalForm: [{
+              title: '利用している行動ターゲティング広告の提供会社を記入してください。',
+              holder: '会社名を入力'
+            }],
           },
           {
-            id:13,
+            id: 13,
             title: '外国への個人情報の移転はありますか？',
             message: '個人情報を取得する画面で同意ボタンを設置するなどして本人から明示的な同意を得る必要があります（プライバシーポリシー外で明示する必要があります。）',
             picked: 'no',
-            radio: [
-              {
+            radio: [{
                 title: 'しない',
                 value: 'no',
               },
@@ -326,69 +329,73 @@
               }
             ]
           }
-        ]
+        ],
+        url:"000"
       }
-    }
+    },
+    methods: {　
+      onSubmit: function() {
+        console.log("hello")
+      }
   }
-
-
+  }
 </script>
 
 
 <style lang="scss" scoped>
-  .question {
+.question {
     &-main {
 
-      .tabs {
-        margin-bottom: 3rem;
-      }
+        .tabs {
+            margin-bottom: 3rem;
+        }
 
     }
     &--list {
-      padding: 0 1rem;
-      margin-bottom: 3rem;
+        padding: 0 1rem;
+        margin-bottom: 3rem;
     }
     &--card {
-      padding: 1rem;
-      border-radius: .5rem;
-      margin-bottom: 1rem;
-      .num {
-        height: 3rem;
-        width: 3rem;
-        border-radius: 50%;
-        background-color: $pink;
-        color: $white;
-        margin-right: 1rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-weight: bold;
-      }
-      &--title {
-        font-weight: bold;
-      }
-      .check-list {
-        margin-bottom: 2rem;
-        ul {
-          padding-left: 4rem;
-          margin-bottom: 2rem;
-        }
-        .checkbox {
-          margin-bottom: .3rem;
-          input {
-            margin-right: .5rem;
-          }
-        }
-      }
-      dt {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
+        padding: 1rem;
+        border-radius: 0.5rem;
         margin-bottom: 1rem;
-        span {
-          vertical-align: middle;
+        .num {
+            height: 3rem;
+            width: 3rem;
+            border-radius: 50%;
+            background-color: $pink;
+            color: $white;
+            margin-right: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
         }
-      }
+        &--title {
+            font-weight: bold;
+        }
+        .check-list {
+            margin-bottom: 2rem;
+            ul {
+                padding-left: 4rem;
+                margin-bottom: 2rem;
+            }
+            .checkbox {
+                margin-bottom: 0.3rem;
+                input {
+                    margin-right: 0.5rem;
+                }
+            }
+        }
+        dt {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 1rem;
+            span {
+                vertical-align: middle;
+            }
+        }
     }
-  }
+}
 </style>
